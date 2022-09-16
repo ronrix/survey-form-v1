@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha",
+    "docker-test": "NODE_ENV=test ./node_modules/.bin/mocha src/test/*.test.js",
+    "test": "NODE_ENV=test mocha test/*.test.js",
     "start": "NODE_ENV=test nodemon app.js",
     "debug": "NODE_ENV=test nodemon --inspect app.js"
   },
