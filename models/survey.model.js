@@ -47,10 +47,17 @@ class SurveyModel extends Model {
 	// supply the logic for each function:
 	generateCaptcha(){
 		/*
-			DOCU: i just simply return this.captcha, because i don't have idea what to put in here
+			DOCU: generating 5 random characters
 			OWNER: ronrix
 		*/ 
-		return this.captcha; 
+
+		 let captcha_string = "";
+		for(let i=0; i<5; i++) {
+			const code = Math.floor(Math.random() * 122 + 65);
+			captcha_string += String.fromCharCode(code);
+		}
+
+		return captcha_string
 	}
 
 	verifyCaptchaInput(input){
@@ -58,7 +65,7 @@ class SurveyModel extends Model {
 			DOCU: checking if the input is matched with this.captcha, return success message if matched else return error message
 			OWNER: ronrix
 		*/ 
-		return input === this.generateCaptcha() ? "Success! Captcha input matched." : "Error! Captcha input doesn't matched."; 
+		return input === this.captcha ? "Success! Captcha input matched." : "Error! Captcha input doesn't matched."; 
 	}
 }
 
