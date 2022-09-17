@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                     docker version
                     docker info
-                    docker compose version
+                    docker-compose version
                     cur --version
                     jq --version
                     sudo usermod -a -G docker jenkins
@@ -20,8 +20,8 @@ pipeline {
         }
         stage('Start container') {
             steps {
-                sh 'docker compose up -d --no-color --wait'
-                sh 'docker compose ps'
+                sh 'docker-compose up -d --no-color --wait'
+                sh 'docker-compose ps'
             }
         }
         stage('Run tests against the container') {
@@ -32,8 +32,8 @@ pipeline {
     }
     post {
         always {
-            sh 'docker compose down --remove-orphans -v'
-            sh 'docker compose ps'
+            sh 'docker-compose down --remove-orphans -v'
+            sh 'docker-compose ps'
         }
     }
 }
