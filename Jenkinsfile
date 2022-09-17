@@ -7,9 +7,6 @@ pipeline {
                     docker version
                     docker info
                     docker-compose version
-                    cur --version
-                    jq --version
-                    sudo usermod -a -G docker jenkins
                 '''
             }
         }
