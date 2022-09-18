@@ -23,6 +23,7 @@ pipeline {
         }
         stage('Run tests against the container') {
             steps {
+                sh 'npm install'
                 sh 'npm run docker-test'
             }
         }
